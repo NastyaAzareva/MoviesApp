@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="4dp"
-        app:cardUseCompatPadding="true" >
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clMain"
@@ -23,7 +23,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:minLines="2"
-                app:layout_constraintEnd_toStartOf="@+id/moviePoster"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Реальные упыри" />
@@ -44,7 +43,7 @@
                 android:layout_width="120dp"
                 android:layout_height="160dp"
                 android:padding="8dp"
-                android:scaleType="centerCrop"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -61,6 +60,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

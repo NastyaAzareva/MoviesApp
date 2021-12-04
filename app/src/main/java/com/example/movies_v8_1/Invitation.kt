@@ -16,7 +16,6 @@ class Invitation {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject) // Зачем
         emailIntent.putExtra(Intent.EXTRA_TEXT, emailtext) // О чём
 
-        // Поехали!
         activity.startActivity(Intent.createChooser(emailIntent,"Отправка письма..."))
     }
 }

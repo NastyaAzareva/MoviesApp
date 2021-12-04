@@ -4,41 +4,40 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.movies_v8_1.data.MoviesData
+import com.example.movies_v8_1.databinding.FragmentMovieDetailsBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieDetailsFragment : Fragment() {
-    private val moviesData = MoviesData()
     private val args: MovieDetailsFragmentArgs by navArgs()
-    lateinit var img: ImageView
-    lateinit var tv: TextView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentMovieDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_movie_details, container, false)
-        img = v.findViewById(R.id.main_backdrop)
-        tv = v.findViewById(R.id.movieDescription)
+        binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
 
         setMovieDetailsUI(args.movieName)
-        return v
+
+        binding.fabDetails.setOnClickListener {
+            args.movieName?.let { it1 -> MoviesData.setFavourite(it1) }
+        }
+        return binding.root
     }
 
     private fun setMovieDetailsUI(movieName: String?){
         if (movieName != "" && movieName != null){
-            tv.text = moviesData.getDescriptionByName(movieName)
+            binding.movieDescription.text = MoviesData.getDescriptionByName(movieName)
 
-            if(moviesData.getPosterByName(movieName) != 0) {
-                img.setImageResource(moviesData.getPosterByName(movieName))
+            if(MoviesData.getPosterByName(movieName) != 0) {
+                binding.mainBackdrop.setImageResource(MoviesData.getPosterByName(movieName))
             }
         }
     }

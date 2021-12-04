@@ -1,7 +1,11 @@
 package com.example.movies_v8_1
 
+import android.app.Dialog
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Menu
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,7 +15,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import com.example.movies_v8_1.databinding.ActivityMainBinding
+import com.example.movies_v8_1.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,7 +62,33 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun shareAppWithFriends(){
+    private fun shareAppWithFriends(){
         Invitation().inviteViaEmail(this)
+    }
+
+    override fun onBackPressed() {
+        if(findNavController(R.id.nav_host_fragment_content_main).currentDestination?.id == R.id.nav_home)
+            LeaveDialog().show(supportFragmentManager, "dialog")
+        else
+            super.onBackPressed()
+    }
+
+    class LeaveDialog: DialogFragment(){
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            return AlertDialog.Builder(requireContext())
+                .setTitle(R.string.leave_dialog_title)
+                .setMessage(R.string.leave_dialog_message)
+                .setNegativeButton("No") {
+                        dialog, which -> requireActivity().finish()
+                }
+                .setNeutralButton("Maybe later"){
+                        dialog, which -> requireActivity().finish()
+                }
+                .setPositiveButton("Ok"){
+                        dialog, which -> Toast.makeText(requireContext(), "OK", Toast.LENGTH_LONG).show()
+                }
+                .setCancelable(false)
+                .create()
+        }
     }
 }

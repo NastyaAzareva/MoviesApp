@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/drawable/divider.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/activity_main.xml" value="0.3802083333333333" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/content_main.xml" value="0.42916666666666664" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/fragment_home.xml" value="0.390625" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/item_movie.xml" value="0.33" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-port/activity_main.xml" value="0.3546875" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-port/content_main.xml" value="0.3546875" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/app_bar_main.xml" value="0.3546875" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/content_main.xml" value="0.3546875" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/fragment_favourites.xml" value="0.3546875" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/fragment_gallery.xml" value="0.3546875" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/fragment_home.xml" value="0.3546875" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout/fragment_movie_details.xml" value="0.3546875" />

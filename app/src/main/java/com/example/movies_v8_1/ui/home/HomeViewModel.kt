@@ -10,4 +10,7 @@ class HomeViewModel : ViewModel() {
         value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
+
+    //чтобы при повороте данные сохранялись
+   // var highlightedMovie MutableLiveData<String> = ""
 }

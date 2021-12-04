@@ -2,7 +2,7 @@ package com.example.movies_v8_1.data
 
 import com.example.movies_v8_1.R
 
-class MoviesData {
+object MoviesData {
     val list = listOf<Movie>(
         Movie(
             "Реальные упыри",
@@ -40,118 +40,117 @@ class MoviesData {
             R.drawable.young_sheldon
         ),
         Movie(
-            "	Зеленая миля	",
+            "Зеленая миля	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Побег из Шоушенка	",
+            "Побег из Шоушенка	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Властелин колец: Возвращение короля	",
+            "Властелин колец: Возвращение короля	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Властелин колец: Две крепости	",
+            "Властелин колец: Две крепости	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Властелин колец: Братство Кольца	",
+            "Властелин колец: Братство Кольца",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Форрест Гамп	",
+            "Форрест Гамп",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Иван Васильевич меняет профессию	",
+            "Иван Васильевич меняет профессию	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Король Лев	",
+            "Король Лев	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Интерстеллар	",
+            "Интерстеллар	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Тайна Коко	",
+            "Тайна Коко	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	ВАЛЛ·И	",
+            "ВАЛЛ·И	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Карты, деньги, два ствола	",
+            "Карты, деньги, два ствола	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Криминальное чтиво	",
+            "Криминальное чтиво	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Матрица	",
+            "Матрица	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Начало	",
+            "Начало	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Клаус	",
+            "Клаус	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
-        Movie("	1+1	", "Описание описание описание описание описание описание описание", R.drawable.poster),
+        Movie("1+1	", "Описание описание описание описание описание описание описание", R.drawable.poster),
         Movie(
-            "	Список Шиндлера	",
-            "Описание описание описание описание описание описание описание",
-            R.drawable.poster
-        ),
-        Movie(
-            "	Унесённые призраками	",
+            "Список Шиндлера	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Назад в будущее	",
+            "Унесённые призраками	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Операция «Ы» и другие приключения Шурика	",
+            "Назад в будущее	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Джентльмены удачи	",
+            "Операция «Ы» и другие приключения Шурика	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         ),
         Movie(
-            "	Приключения Шерлока Холмса и доктора Ватсона: Собака Баскервилей	",
+            "Джентльмены удачи	",
+            "Описание описание описание описание описание описание описание",
+            R.drawable.poster
+        ),
+        Movie(
+            "Приключения Шерлока Холмса и доктора Ватсона: Собака Баскервилей	",
             "Описание описание описание описание описание описание описание",
             R.drawable.poster
         )
     )
-    var favorites: MutableList<Movie> = mutableListOf()
 
     fun setButtonPressed(name: String){
         list.filter { it.isButtonPressed }.forEach {
@@ -171,13 +170,34 @@ class MoviesData {
     fun getMovieByName(name: String): Movie?{
         return list.findLast { it.name == name }
     }
+
+    fun setFavourite(name: String){
+        getMovieByName(name)?.isLiked = true
+        //To Do добавлять в избранное копию а не ссылку и настроить подсветку отдельно в следующем ДЗ
+        getMovieByName(name)?.let {
+            it.isButtonPressed = false
+        }
+    }
+
+    fun removeFromFavourites(name: String){
+        getMovieByName(name)?.isLiked = false
+    }
+
+    fun getFavouritesList(): List<Movie>{
+        var f: MutableList<Movie> = mutableListOf()
+        val set: Set<Movie> = LinkedHashSet(list.filter { it.isLiked })
+        f.clear()
+        f.addAll(set)
+
+        return f
+    }
 }
 
 data class Movie(
     val name: String,
     val description: String,
     val poster: Int,
-    var isButtonPressed: Boolean = false,
+    var isButtonPressed: Boolean = false, //To Do перенести в адаптер в следующем ДЗ
     var isLiked: Boolean =  false,
     var comments: MutableList<String> = mutableListOf()
 )

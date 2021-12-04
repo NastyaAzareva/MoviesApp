@@ -7,21 +7,20 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">На главную</string>
-    <string name="menu_favourites">Избранное</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favourites">Favourites</string>
 
     <string name="toolsDescr">История жизни Виаго, Дикона и Владислава — трёх соседей и по совместительству бессмертных вампиров, которые всего лишь пытаются выжить в современном мире, где есть арендная плата, фейсконтроль в ночных клубах, губительный солнечный свет и другие неприятности.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="comment_hint">Комментарий</string>
-    <string name="details_button">Детали</string>
+    <string name="comment_hint">Comment</string>
+    <string name="details_button">Details</string>
 
-    <string name="leave_dialog_title">До новых встреч =)</string>
-    <string name="leave_dialog_message">Оценить приложение в Google Play</string>
+    <string name="leave_dialog_title">See you soon =)</string>
+    <string name="leave_dialog_message">Would you like to rate MovieApp in Google Play?</string>
 
-    <string name="removed_from_favourites_message">удалено из Избранного</string>
-    <string name="added_to_favourites_message">добавлено в Избранное</string>
-
+    <string name="removed_from_favourites_message">removed from Favourites</string>
+    <string name="added_to_favourites_message">added to Favourites</string>
 
 </resources>

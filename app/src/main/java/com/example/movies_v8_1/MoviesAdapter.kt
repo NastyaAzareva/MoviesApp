@@ -1,63 +1,77 @@
 package com.example.movies_v8_1
 
 import android.graphics.Color
+import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movies_v8_1.data.Movie
+import com.example.movies_v8_1.databinding.ItemMovieBinding
 
 
-class MoviesAdapter(): RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+class MoviesAdapter() : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
     private val movies: ArrayList<Movie> = ArrayList<Movie>()
-    var listener: OnButtonClickListener? = null
+    var listener: Listener? = null
 
-    class MoviesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var movieName: TextView = itemView.findViewById(R.id.movieName)
-        var movieDescr: TextView = itemView.findViewById(R.id.movieDescr)
-        var moviePoster: ImageView = itemView.findViewById(R.id.moviePoster)
-        var detailsButton: Button = itemView.findViewById(R.id.buttonDetails)
-    }
+    class MoviesViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_movie, parent, false)
-        return MoviesViewHolder(itemView)
+        return MoviesViewHolder(ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.movieName.text = movies[holder.adapterPosition].name
-        if(movies[holder.adapterPosition].isButtonPressed){
-            holder.movieName.setTextColor(Color.GREEN)
-        }
-        else{
-            holder.movieName.setTextColor(Color.BLACK)
-        }
+        holder.binding.apply {
+            movieName.text = movies[holder.adapterPosition].name
+            if (movies[holder.adapterPosition].isButtonPressed) {
+                movieName.setTextColor(Color.GREEN)
+            } else {
+                movieName.setTextColor(Color.BLACK)
+            }
 
-        holder.movieDescr.text = movies[holder.adapterPosition].description
-        holder.moviePoster.setBackgroundResource( movies[holder.adapterPosition].poster)
+            movieDescr.text = movies[holder.adapterPosition].description
+            moviePoster.setImageResource(movies[holder.adapterPosition].poster)
 
-        holder.detailsButton.setOnClickListener {
-            listener?.onButtonClick(movies[holder.adapterPosition].name)
+            buttonDetails.setOnClickListener {
+                listener?.onButtonClick(movies[holder.adapterPosition].name)
+            }
+
+            root.setOnLongClickListener {
+                listener?.onLongClick(movies[holder.adapterPosition].name)
+                return@setOnLongClickListener true
+            }
         }
     }
 
-    override fun getItemCount(): Int {
-        return movies.size
-    }
+    override fun getItemCount() = movies.size
 
-    fun setData(list: List<Movie>){
+    fun setData(list: List<Movie>) {
         movies.clear()
         movies.addAll(list)
         notifyDataSetChanged()
     }
 
-    interface OnButtonClickListener{
+    interface Listener {
         fun onButtonClick(name: String)
+        fun onLongClick(name: String)
     }
 }
+
+class NotUglyItemDecoration() : RecyclerView.ItemDecoration() {
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        outRect.top += 20
+        outRect.right += 20
+        outRect.left += 20
+        outRect.bottom += 20
+    }
+
+}
+
+
 
