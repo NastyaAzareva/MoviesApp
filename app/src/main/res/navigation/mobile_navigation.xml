@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.movies_v8_1.ui.home.HomeFragment"
+        android:name="com.example.movies_v8_1.presentation.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/nav_favourites"
-        android:name="com.example.movies_v8_1.ui.favourites.FavouritesFragment"
+        android:name="com.example.movies_v8_1.presentation.ui.favourites.FavouritesFragment"
         android:label="@string/menu_favourites"
         tools:layout="@layout/fragment_favourites" >
         <action
@@ -26,12 +26,11 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
-        android:name="com.example.movies_v8_1.MovieDetailsFragment"
+        android:name="com.example.movies_v8_1.presentation.ui.details.MovieDetailsFragment"
         android:label="MovieDetailsFragment" >
         <argument
-            android:name="movie_name"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="movieId"
+            app:argType="long" />
     </fragment>
 
 </navigation>

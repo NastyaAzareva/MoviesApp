@@ -1,24 +1,23 @@
-package com.example.movies_v8_1
+package com.example.movies_v8_1.presentation.ui
 
-import android.app.Dialog
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
+import com.example.movies_v8_1.R
+import com.example.movies_v8_1.common.Invitation
 import com.example.movies_v8_1.databinding.ActivityMainBinding
-import com.example.movies_v8_1.ui.home.HomeFragment
+import com.example.movies_v8_1.presentation.ui.home.components.LeaveDialog
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -33,15 +32,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Shared with friends", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
             shareAppWithFriends()
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_favourites
@@ -52,7 +50,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -63,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shareAppWithFriends(){
-        Invitation().inviteViaEmail(this)
+        Invitation().inviteViaEmail(this) //TO DO сделать статичным методом или перенести сюда
     }
 
     override fun onBackPressed() {
@@ -73,22 +70,5 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
     }
 
-    class LeaveDialog: DialogFragment(){
-        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            return AlertDialog.Builder(requireContext())
-                .setTitle(R.string.leave_dialog_title)
-                .setMessage(R.string.leave_dialog_message)
-                .setNegativeButton("No") {
-                        dialog, which -> requireActivity().finish()
-                }
-                .setNeutralButton("Maybe later"){
-                        dialog, which -> requireActivity().finish()
-                }
-                .setPositiveButton("Ok"){
-                        dialog, which -> Toast.makeText(requireContext(), "OK", Toast.LENGTH_LONG).show()
-                }
-                .setCancelable(false)
-                .create()
-        }
-    }
 }
+

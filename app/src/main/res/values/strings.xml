@@ -11,7 +11,7 @@
     <string name="menu_favourites">Избранное</string>
 
     <string name="toolsDescr">История жизни Виаго, Дикона и Владислава — трёх соседей и по совместительству бессмертных вампиров, которые всего лишь пытаются выжить в современном мире, где есть арендная плата, фейсконтроль в ночных клубах, губительный солнечный свет и другие неприятности.</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="comment_hint">Комментарий</string>
@@ -23,5 +23,6 @@
     <string name="removed_from_favourites_message">удалено из Избранного</string>
     <string name="added_to_favourites_message">добавлено в Избранное</string>
 
-
+    <string name="api_error_message">Сервер недоступен</string>
+    <string name="Refresh_home_data">Обновить</string>
 </resources>

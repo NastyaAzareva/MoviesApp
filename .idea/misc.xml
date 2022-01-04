@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/drawable/divider.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.27760416666666665" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/drawable/ic_baseline_texture_24.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/activity_main.xml" value="0.3802083333333333" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/content_main.xml" value="0.42916666666666664" />
+        <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/fragment_favourites.xml" value="0.4109375" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/fragment_home.xml" value="0.390625" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-land/item_movie.xml" value="0.33" />
         <entry key="..\:/Users/anaio/AndroidStudioProjects/Movies_v8_1/app/src/main/res/layout-port/activity_main.xml" value="0.3546875" />

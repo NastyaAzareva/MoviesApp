@@ -1,4 +1,4 @@
-package com.example.movies_v8_1
+package com.example.movies_v8_1.common
 
 import android.app.Activity
 import android.content.Intent
