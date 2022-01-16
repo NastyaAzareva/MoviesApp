@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetMoviesFromCache@Inject constructor(
     private val repository: MovieRepository
 ) {
-    suspend fun eee(): List<MovieModel>{
+    suspend fun list(): List<MovieModel>{
         return repository.getMoviesFromCache()
     }
 }

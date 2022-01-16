@@ -2,12 +2,10 @@ package com.example.movies_v8_1.presentation.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.movies_v8_1.common.Resource
 import com.example.movies_v8_1.domain.model.MovieModel
 import com.example.movies_v8_1.domain.use_case.get_movies.GetMoviesByPeriodUseCase
 import com.example.movies_v8_1.domain.use_case.get_movies.GetMoviesFromCache
-import com.example.movies_v8_1.domain.use_case.get_movies.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +23,7 @@ class HomeViewModel @Inject constructor(
     var state: MutableLiveData<MovieListState> = MutableLiveData()
     var list: ArrayList<MovieModel> = arrayListOf()
     private var currentPage: Int
-    private var isDataFromCachePresented: Boolean = false
+    private var isDataFromCachePresented: Boolean = true
 
     private val viewModelJob = SupervisorJob()
     private val ioScope = CoroutineScope(Dispatchers.IO + viewModelJob)
@@ -61,9 +59,10 @@ class HomeViewModel @Inject constructor(
                         state.postValue(MovieListState.Error(result.message ?: "An unexpected error occurred"))
                     }
                     is Resource.Loading -> {
-                        list.addAll(getMoviesFromCache.eee())
+                        if(isDataFromCachePresented){
+                            list.addAll(getMoviesFromCache.list())
+                        }
                         state.postValue(MovieListState.Loading())
-                        isDataFromCachePresented = true
                     }
                 }
             }.launchIn(ioScope)

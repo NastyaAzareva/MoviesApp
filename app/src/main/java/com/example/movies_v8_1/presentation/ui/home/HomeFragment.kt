@@ -58,14 +58,12 @@ class HomeFragment : Fragment() {
                         binding.pullToRefresh?.isRefreshing = false
                     }
                     is MovieListState.Loading -> {
-                        Log.d("qwerty", "Loading...")
                         binding.rvMain.visibility = View.INVISIBLE
                         binding.progressBar?.visibility = View.VISIBLE
                         binding.errorTextView?.visibility = View.INVISIBLE
                         binding.refreshButton?.visibility = View.INVISIBLE
                     }
                     is MovieListState.Error -> {
-                        Log.d("qwerty ", t.message)
                         binding.rvMain.visibility = View.INVISIBLE
                         binding.progressBar?.visibility = View.INVISIBLE
                         binding.errorTextView?.visibility = View.VISIBLE

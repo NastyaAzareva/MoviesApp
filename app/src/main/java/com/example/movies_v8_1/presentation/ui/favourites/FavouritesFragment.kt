@@ -20,14 +20,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavouritesFragment : Fragment() {
     private  val favouritesVM: FavouritesViewModel by viewModels()
     private val adapter: MoviesAdapter = MoviesAdapter()
-    lateinit var binding: FragmentHomeBinding
+    lateinit var binding: FragmentFavouritesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFavouritesBinding.inflate(inflater, container, false)
+        binding = FragmentFavouritesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
