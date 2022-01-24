@@ -6,15 +6,17 @@ import androidx.room.RoomDatabase
 @Database(
     entities = arrayOf(
         FavouriteMoviesEntity::class,
-        PremiereEntity::class
+        PremiereEntity::class,
+        SeeLaterEntity::class
     ),
-    version = 2,
+    version = 4,
     exportSchema = false
 )
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun getFavouritesDao(): FavouriteMoviesDAO
     abstract fun getPremieresDAO(): PremieresDAO
+    abstract fun getSeeLaterDao(): SeeLaterDAO
 
 }
 

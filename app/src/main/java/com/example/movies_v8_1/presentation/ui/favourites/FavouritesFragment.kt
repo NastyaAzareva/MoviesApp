@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movies_v8_1.presentation.ui.MoviesAdapter
 import com.example.movies_v8_1.databinding.FragmentFavouritesBinding
-import com.example.movies_v8_1.databinding.FragmentHomeBinding
 import com.example.movies_v8_1.presentation.ui.home.MovieListState
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -4,6 +4,7 @@ import com.example.movies_v8_1.common.Constants
 import com.example.movies_v8_1.data.db.AppDatabase
 import com.example.movies_v8_1.data.db.FavouriteMoviesEntity
 import com.example.movies_v8_1.data.db.PremiereEntity
+import com.example.movies_v8_1.data.db.SeeLaterEntity
 import com.example.movies_v8_1.data.remote.Api
 import com.example.movies_v8_1.presentation.ui.home.PremieresPeriod
 import com.example.movies_v8_1.data.remote.dto.movie.MovieDTO
@@ -57,6 +58,22 @@ class MovieRepositoryImp @Inject constructor(
 
     override suspend fun addToFavourites(movie: FavouriteMoviesEntity) {
         db.getFavouritesDao().addToFavourites(movie)
+    }
+
+    override suspend fun getSeeLaterMovies(): List<MovieModel> {
+    //TODO дата
+        return db.getSeeLaterDao().getSeeLaterList().map {
+            MovieModel(
+                it.kinopoiskID,
+                it.nameRu,
+                it.posterURLPreview
+            )
+        }
+    }
+
+    override suspend fun addToSeeLater(movie: SeeLaterEntity) {
+        //TODO
+        db.getSeeLaterDao().addMovie(movie)
     }
 
     override suspend fun writeMoviesToPremieresTable(list: List<PremiereEntity>) {

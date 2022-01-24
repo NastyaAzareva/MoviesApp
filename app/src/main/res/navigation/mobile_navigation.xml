@@ -24,6 +24,14 @@
             android:id="@+id/action_nav_favourites_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_see_later"
+        android:name="com.example.movies_v8_1.presentation.ui.later.LaterFragment"
+        android:label="@string/menu_later"
+        tools:layout="@layout/fragment_later" >
+    </fragment>
+
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.movies_v8_1.presentation.ui.details.MovieDetailsFragment"

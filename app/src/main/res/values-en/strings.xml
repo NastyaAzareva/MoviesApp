@@ -25,4 +25,5 @@
 
     <string name="api_error_message">Server is not available</string>
     <string name="Refresh_home_data">Refresh</string>
+    <string name="menu_later">Later</string>
 </resources>
