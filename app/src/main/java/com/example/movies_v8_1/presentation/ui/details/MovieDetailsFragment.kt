@@ -44,37 +44,16 @@ class MovieDetailsFragment : Fragment() {
             override fun onChanged(t: MovieDetailState?) {
                 t?.let {
                     if (it.error != "") {
-                        binding.mainAppbar.visibility = View.GONE
-                        binding.nestedScrollView?.visibility = View.GONE
-                        binding.fabAddToFavourite.visibility = View.GONE
-
-                        binding.progressBar?.visibility = View.GONE
-
-                        binding.errorTextView?.visibility = View.VISIBLE
-                        binding.refreshButton?.visibility = View.VISIBLE
+                        setErrorStateView()
                     }
                     if (it.isLoading) {
-                        binding.mainAppbar.visibility = View.GONE
-                        binding.nestedScrollView?.visibility = View.GONE
-                        binding.fabAddToFavourite.visibility = View.GONE
-
-                        binding.progressBar?.visibility = View.VISIBLE
-
-                        binding.errorTextView?.visibility = View.GONE
-                        binding.refreshButton?.visibility = View.GONE
+                        setLoadingStateView()
                     }
                     if (it.movie != null) {
                         setMovieDetailsUIData(it.movie)
                         currentMovie = it.movie
 
-                        binding.mainAppbar.visibility = View.VISIBLE
-                        binding.nestedScrollView?.visibility = View.VISIBLE
-                        binding.fabAddToFavourite.visibility = View.VISIBLE
-
-                        binding.progressBar?.visibility = View.GONE
-
-                        binding.errorTextView?.visibility = View.GONE
-                        binding.refreshButton?.visibility = View.GONE
+                        setSuccessStateView()
                     }
                 }
             }
@@ -106,5 +85,37 @@ class MovieDetailsFragment : Fragment() {
             .override(200, 200) // resizing
             .centerCrop()
             .into(binding.mainBackdrop);  // imageview object
+    }
+
+    fun setSuccessStateView(){
+        with(binding){
+            mainAppbar.visibility = View.VISIBLE
+            nestedScrollView?.visibility = View.VISIBLE
+            fabAddToFavourite.visibility = View.VISIBLE
+            progressBar?.visibility = View.GONE
+            errorTextView?.visibility = View.GONE
+            refreshButton?.visibility = View.GONE
+        }
+    }
+
+    fun setLoadingStateView(){
+        with(binding){
+            mainAppbar.visibility = View.GONE
+            nestedScrollView?.visibility = View.GONE
+            fabAddToFavourite.visibility = View.GONE
+            progressBar?.visibility = View.VISIBLE
+            errorTextView?.visibility = View.GONE
+            refreshButton?.visibility = View.GONE
+        }
+    }
+    fun setErrorStateView(){
+        with(binding) {
+            mainAppbar.visibility = View.GONE
+            nestedScrollView?.visibility = View.GONE
+            fabAddToFavourite.visibility = View.GONE
+            progressBar?.visibility = View.GONE
+            errorTextView?.visibility = View.VISIBLE
+            refreshButton?.visibility = View.VISIBLE
+        }
     }
 }

@@ -38,31 +38,42 @@ class LaterFragment : Fragment() {
                 when (t) {
                     is MovieListState.Success -> {
                         adapter.setData(t.data)
-                        binding.errorTextView.visibility = View.GONE
-                        binding.refreshButton.visibility = View.GONE
-
-                        binding.progressBar.visibility = View.GONE
-
-                        binding.rvMain.visibility = View.VISIBLE
+                        setSuccessStateView()
                     }
                     is MovieListState.Loading -> {
-                        binding.errorTextView.visibility = View.GONE
-                        binding.refreshButton.visibility = View.GONE
-
-                        binding.progressBar.visibility = View.VISIBLE
-
-                        binding.rvMain.visibility = View.GONE
+                        setLoadingStateView()
                     }
                     is MovieListState.Error -> {
-                        binding.errorTextView.visibility = View.VISIBLE
-                        binding.refreshButton.visibility = View.VISIBLE
-
-                        binding.progressBar.visibility = View.GONE
-
-                        binding.rvMain.visibility = View.GONE
+                        setErrorStateView()
                     }
                 }
             }
         })
+    }
+
+    fun setSuccessStateView(){
+        with(binding){
+            errorTextView.visibility = View.GONE
+            refreshButton.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            rvMain.visibility = View.VISIBLE
+        }
+    }
+
+    fun setLoadingStateView(){
+        with(binding){
+            errorTextView.visibility = View.GONE
+            refreshButton.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+            rvMain.visibility = View.GONE
+        }
+    }
+    fun setErrorStateView(){
+        with(binding) {
+            errorTextView.visibility = View.VISIBLE
+            refreshButton.visibility = View.VISIBLE
+            progressBar.visibility = View.GONE
+            rvMain.visibility = View.GONE
+        }
     }
 }

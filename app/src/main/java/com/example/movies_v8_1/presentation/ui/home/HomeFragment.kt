@@ -1,7 +1,6 @@
 package com.example.movies_v8_1.presentation.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
-import androidx.viewbinding.ViewBinding
 import com.example.movies_v8_1.presentation.ui.MoviesAdapter
 import com.example.movies_v8_1.presentation.ui.NotUglyItemDecoration
 import com.example.movies_v8_1.R
@@ -50,25 +48,14 @@ class HomeFragment : Fragment() {
             override fun onChanged(t: MovieListState?) {
                 when (t) {
                     is MovieListState.Success -> {
-                        adapter.setData(homeVM.list)
-                        binding.progressBar?.visibility = View.INVISIBLE
-                        binding.rvMain.visibility = View.VISIBLE
-                        binding.errorTextView?.visibility = View.INVISIBLE
-                        binding.refreshButton?.visibility = View.INVISIBLE
-                        binding.pullToRefresh?.isRefreshing = false
+                        adapter.setData(t.data)
+                        setSuccessStateView()
                     }
                     is MovieListState.Loading -> {
-                        binding.rvMain.visibility = View.INVISIBLE
-                        binding.progressBar?.visibility = View.VISIBLE
-                        binding.errorTextView?.visibility = View.INVISIBLE
-                        binding.refreshButton?.visibility = View.INVISIBLE
+                        setLoadingStateView()
                     }
                     is MovieListState.Error -> {
-                        binding.rvMain.visibility = View.INVISIBLE
-                        binding.progressBar?.visibility = View.INVISIBLE
-                        binding.errorTextView?.visibility = View.VISIBLE
-                        binding.refreshButton?.visibility = View.VISIBLE
-                        binding.pullToRefresh?.isRefreshing = false
+                        setErrorStateView()
                     }
                 }
             }
@@ -123,6 +110,34 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             }
+        }
+    }
+
+    fun setSuccessStateView(){
+        with(binding){
+            progressBar?.visibility = View.INVISIBLE
+            rvMain.visibility = View.VISIBLE
+            errorTextView?.visibility = View.INVISIBLE
+            refreshButton?.visibility = View.INVISIBLE
+            pullToRefresh?.isRefreshing = false
+        }
+    }
+
+    fun setLoadingStateView(){
+        with(binding){
+            rvMain.visibility = View.INVISIBLE
+            progressBar?.visibility = View.VISIBLE
+            errorTextView?.visibility = View.INVISIBLE
+            refreshButton?.visibility = View.INVISIBLE
+        }
+    }
+    fun setErrorStateView(){
+        with(binding) {
+            rvMain.visibility = View.INVISIBLE
+            progressBar?.visibility = View.INVISIBLE
+            errorTextView?.visibility = View.VISIBLE
+            refreshButton?.visibility = View.VISIBLE
+            pullToRefresh?.isRefreshing = false
         }
     }
 }

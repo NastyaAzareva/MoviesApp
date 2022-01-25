@@ -21,7 +21,7 @@ class HomeViewModel @Inject constructor(
     private val getMoviesFromCache: GetMoviesFromCache
 ) : ViewModel() {
     var state: MutableLiveData<MovieListState> = MutableLiveData()
-    var list: ArrayList<MovieModel> = arrayListOf()
+    private var list: ArrayList<MovieModel> = arrayListOf()
     private var currentPage: Int
     private var isDataFromCachePresented: Boolean = true
 
@@ -53,7 +53,7 @@ class HomeViewModel @Inject constructor(
                             isDataFromCachePresented = false
                         }
                         list.addAll(result.data ?: emptyList())
-                        state.postValue(MovieListState.Success(result.data ?: emptyList()))
+                        state.postValue(MovieListState.Success(list))
                     }
                     is Resource.Error -> {
                         state.postValue(MovieListState.Error(result.message ?: "An unexpected error occurred"))
